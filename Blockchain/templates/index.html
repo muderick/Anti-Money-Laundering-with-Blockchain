@@ -1,0 +1,48 @@
+{% extends "layout.html" %}{% block title %}Overview Page{% endblock %}{% block content %}
+<div class="sticky-top flex-md-wrap p-0 shadow">
+    <div class="container-fluid">
+        <div class="col-12">
+            <main class="col-12 col-lg-10 pb-4">
+                <div class="pt-3 pb-3 mb-3 border-bottom d-flex justify-content-between">
+                    <h1><i class="fab fa-btc" style="color: #7ed065"></i>lockcha<i class="fas fa-info" style="color: #7ed065"></i>n</h1>
+                    <h3 class="text-dark text-opacity-10">
+                        {{ datetime.strftime("%B %d, %Y") }}
+                        <div id="clockDisplay">
+                        </div>
+                    </h3>
+                </div>
+                <h2 class="text-dark text-opacity-10">
+                    Welcome To Blockchain Anti Money Laundering
+                </h2>
+            </main>
+        </div>
+        <script>
+            function renderTime() {
+                var currentTime = new Date();
+                var diem = "AM";
+                var h = currentTime.getHours();
+                var m = currentTime.getMinutes();
+                var s = currentTime.getSeconds();
+                if (h == 0) {
+                    h = 12;
+                } else if (h > 12) {
+                    h = h - 12;
+                    diem = "PM";
+                }
+                if (h < 10) {
+                    h = "0" + h;
+                }
+                if (m < 10) {
+                    m = "0" + m;
+                }
+                if (s < 10) {
+                    s = "0" + s;
+                }
+                var myClock = document.getElementById("clockDisplay");
+                myClock.textContent = h + ":" + m + ":" + s + " " + diem;
+                setTimeout("renderTime()", 1000);
+            }
+            renderTime();
+        </script>
+        {% endblock %}
+    </div>

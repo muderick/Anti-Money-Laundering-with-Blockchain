@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css' )}}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='bg_images/favicon.ico') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://kit.fontawesome.com/ab1959135b.js" crossorigin="anonymous"></script>
+    <title>Login</title>
+</head>
+
+<body class="col-sm-8 mx-auto" style="padding-top: 10%;">
+    <div class="col-md-8 shadow bg-dark bg-opacity-10 my-auto mx-auto pt-3">
+        <div class="d-block col-md-10 mx-auto pt-3">
+            <h1 class="text-center">Login</h1>
+            <div class="form-group text-center">
+                <button class="btn btn-outline-primary"><a href="{{ url_for('login') }}" class="active mx-2 text-black-50">LogIn</a></button>
+                <button class="btn btn-outline-primary"><a href="{{ url_for('register') }}" class="mx-2 text-black-50">SignUp</a></button>
+            </div>
+
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <div class="form-group py-2 ">
+                        {{ form.email.label(class="form-control-label") }} {% if form.email.errors %} {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                            <span>{{ error }}</span> {% endfor %}
+                        </div>
+                        {% else %} {{ form.email(class="form-control form-control-lg") }} {% endif %}
+                    </div>
+                    <div class="form-group py-2">
+                        {{ form.password.label(class="form-control-label") }} {% if form.password.errors %} {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                            <span>{{ error }}</span> {% endfor %}
+                        </div>
+                        {% else %} {{ form.password(class="form-control form-control-lg") }} {% endif %}
+                    </div>
+                    <div class="form-check py2">
+                        {{ form.remember(class="form-check-input") }} {{ form.remember.label(class="form-check-label") }}
+                    </div>
+                </fieldset>
+                <div class="form-group text-center pt-3 pb-3">
+                    {{ form.submit(class="btn btn-outline-dark") }} <br>
+                </div>
+            </form>
+        </div>
+        <div class="pt-3 pb-3 text-center">
+            <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{{ url_for('register')  }}">Sign Up Now</a>
+        </small>
+        </div>
+    </div>
+
+</html>
+</body>
+
+</html>

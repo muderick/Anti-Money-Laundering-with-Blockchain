@@ -1,0 +1,19 @@
+{% extends 'layout.html'%} {% block title %}Mining Page{% endblock %} {% block content %}
+<div class="bg-light container-fluid d-block">
+    <div class="">
+        Message: {{ response.message }}
+    </div>
+    <div class="">
+        Index: {{ response.index }}
+    </div>
+    <div class="">
+        Transactions: {{ response.transactions }}
+    </div>
+    <div class="">
+        Proof: {{ response.proof }}
+    </div>
+    <div class="">
+        Previous Hash{{ response.previous_hash }}
+    </div>
+</div>
+{% endblock %}

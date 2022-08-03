@@ -1,0 +1,55 @@
+{% extends "layout.html" %}{% block title %}Commence a Transaction{% endblock %} {% block content %}
+<div class="container-fluid">
+    <div class="table-responsive table-hover">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email Id</th>
+                    <th scope="col">Current Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ current_user.username }}</td>
+                    <td>{{ current_user.email }}</td>
+                    <td>
+                        <i class="fas fa-dollar-sign"></i> {{ current_user.balance }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-8 mx-auto text-lg-center">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">
+                    Send Money
+                    <i class="fa-solid fa-money-check-dollar"></i>
+                </h4>
+            </div>
+            <div class="card-body text-center">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+
+                    <div class="col-md-6 mx-auto">
+                        <div class="form-group">
+                            {{ form.recipient(placeholder="username@gmail.com", class="form-control bg-transparent") }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mx-auto mt-3">
+                        <div class="form-group">
+                            {{ form.amount(placeholder="$", class="form-control bg-transparent", type="number") }} {% for error in form.amount.errors %} {{error}} {% endfor %}
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

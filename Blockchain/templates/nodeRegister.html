@@ -1,0 +1,51 @@
+{% extends "layout.html" %}{% block title %}Register Node{% endblock %}{% block content %}
+<div class="container-fluid">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header card-header-primary ">
+                <h4 class="card-title text-center">New Node</h4>
+                <p class="card-category">Fill in the following</p>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <div class="col-12">
+                        <div class="">
+                            <div class="col-md-6 mx-auto">
+                                <div class="form-group">
+                                    {{ form.miner_name.label(class="bmd-label-floating" ) }} {{ form.miner_name(placeholder="username", class="form-control bg-transparent", type="text") }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mx-auto">
+
+                                <div class="form-group">
+                                    {{ form.email.label(class="bmd-label-floating" ) }} {{ form.email(placeholder="username@gmail.com", class="form-control bg-transparent", type="text") }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mx-auto">
+                                <div class="form-group">
+                                    {{ form.ip_address.label(class="bmd-label-floating" ) }} {{ form.ip_address(placeholder="ie. 0.0.0.0", class="form-control bg-transparent", type="text") }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mx-auto">
+                                <div class="form-group">
+                                    {{ form.phone_number.label(class="bmd-label-floating" ) }} {{ form.phone_number(placeholder="ie. 0700000000", class="form-control bg-transparent", type="text") }}
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="text-center my-3">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

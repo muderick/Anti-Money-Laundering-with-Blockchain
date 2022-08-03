@@ -1,0 +1,49 @@
+{% extends "layout.html" %}{% block title %}Chain Data{% endblock %}{% block content %}
+<div class="container-sm">
+    <h2 class="text-center">Chain List</h2>
+    {% for block in blocks %}
+    <table id="data" class="table table-success table-striped-columns table-responsive">
+        <thead>
+            <tr>
+                <th>Block: {{ block.id }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Timestamp: {{ block.timestamp }}</th>
+            </tr>
+            <tr>
+                <th>
+                    Transactions:
+                </th>
+            </tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <th>Sender: {{ block.sender }}</th>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th>Recipient: {{block.recipient }}</th>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <th>Amount: {{ block.amount }}</th>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <tr>
+                <th>Proof: {{ block.proof }}</th>
+            </tr>
+            <tr>
+                <th>Previous_hash: {{ block.hash }}</th>
+            </tr>
+        </tbody>
+    </table>
+    {% endfor %}
+</div>
+{% endblock content %}

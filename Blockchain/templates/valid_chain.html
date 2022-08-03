@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='bg_images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css' )}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://kit.fontawesome.com/ab1959135b.js" crossorigin="anonymous"></script>
+    <title>Valid Chain</title>
+</head>
+
+<body class="shadow" style="padding-top: 5%;">
+    <div class="table table-stripped mx-2">
+        {% block content %}
+        <table class="shadow table table-stripped table-bordered">
+            <thead class="text-center">
+                Valid Chain
+            </thead>
+            <tbody>
+                <td style="background-position:center center " valign="top " align="center ">
+                    <table class="table table-bordered">
+                        <tr style="background-color:navy;color:white ">
+                            <td>Sender</td>
+                            <td>Recipient</td>
+                            <td>Amount</td>
+                            <td>Proof</td>
+                            <td>Hash</td>
+                            <td>Timestamp</td>
+                        </tr>
+                        {% for block in response %} {% for index in block %}
+                        <tr class="pt-2">
+                            <td>{{ index.sender }}</td>
+                            <td>{{ index.recipient }}</td>
+                            <td>{{index.amount}}</td>
+                            <td>{{index.proof}}</td>
+                            <td style="width: 25px;" data-bs-spy="scroll">{{index.hash}}</td>
+                            <td>{{index.timestamp}}</td>
+                        </tr>
+                        {% endfor %} {% endfor %}
+                    </table>
+
+                </td>
+            </tbody>
+        </table>
+        {{message}} {{length}} {% endblock %}
+    </div>
+</body>
+
+</html>

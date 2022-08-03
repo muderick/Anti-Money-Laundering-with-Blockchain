@@ -1,0 +1,140 @@
+{% block content %}
+
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='bg_images/favicon.ico') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://kit.fontawesome.com/ab1959135b.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .a_f {
+            color: white;
+            background-color: #FF3399;
+            padding: 5px 15px 5px 15px;
+            text-decoration: none;
+            border-radius: 20px;
+            text-align: center;
+            display: block;
+            width: 120px;
+        }
+        
+        .login-dark {
+            background-color: rgb(30, 40, 51);
+            text-align: center;
+            padding: 20px;
+            width: 350px;
+            height: 450px;
+            border-radius: 5px;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Verdana, sans-serif;
+        }
+        
+        .mySlides {
+            display: none;
+        }
+        
+        .ml {
+            margin-left: 4rem;
+        }
+    </style>
+</head>
+
+<body class="bg-light bg-opacity-10 col-12">
+    <div class="">
+        <header class="p-3 bg-dark bg-opacity-10 border-bottom ">
+            <div class="">
+                <div class="d-flex flex-nowrap align-items-center justify-content-center justify-content-lg-start container-fluid ">
+                    <div class="text-start d-block " aria-expanded="false ">
+                        <div class="text-center ">
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for( 'user_info') }} " aria-expanded="false ">
+                                <img src="{{image_file}} " width="50 " height="50 " class="rounded-circle ">
+                            </a>
+                            {% else %}
+                            <a href="{{ url_for( 'user_info') }} " aria-expanded="false ">
+                                <img src="{{url_for( 'static', filename='profile_pics/default.png' )}} " width="50 " height="50 " class="rounded-circle ">
+                            </a>
+                            {% endif %}
+                        </div>
+                        <div class="text-center ">
+                            <a class="nav-link link-dark " href="{{ url_for( 'user_info') }} ">{{username}}</a>
+                        </div>
+                    </div>
+
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 mx-4 ">
+                        <li><a href="{{ url_for( 'home') }} " class="nav-link px-2 link-dark ">Home</a></li>
+                        <li><a href="{{ url_for( 'new_transaction_page') }} " class="nav-link px-2 link-dark ">Transaction</a></li>
+                        <li><a href="{{ url_for( 'register_new_nodes') }} " class="nav-link px-2 link-dark ">Nodes</a></li>
+                        <li><a href="{{ url_for( 'register') }} " class="nav-link px-2 link-dark ">Register Account</a></li>
+                        <li><a href="{{ url_for( 'about') }} " class="nav-link px-2 link-dark ">About</a></li>
+                    </ul>
+
+                    <div class="d-block">
+                        {%if current_user.is_authenticated%}
+                        <div class="flex-wrap">
+                            <a class="nav-link ml-2 link-dark" href="{{ url_for('logout') }}">
+                                <div class="text-center">
+                                    <i class="fa-solid text-center fa-person-booth"></i>
+                                </div>
+                                Log Out
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="sticky-top flex-md-wrap px-5 shadow py-3">
+            <div class="container-fluid">
+                <div class="">
+                    <div class="align-items-center pt3 pb-3 mb-3 border-bottom justify-content-between">
+                        <table border="0 " class="shadow">
+                            <tr>
+                                <td style="background-position:center center " valign="top " align="center ">
+                                    <table class="table table-bordered">
+                                        <tr class="bg-dark bg-opacity-10">
+                                            <td>Miner ID</td>
+                                            <td>Miner Name</td>
+                                            <td>Email</td>
+                                            <td>Phone Number</td>
+                                            <td>Ip Address</td>
+                                        </tr>
+                                        {% for block in blocks %}
+                                        <tr class="pt-2">
+                                            <td>Miner: {{ block.id }}</td>
+                                            <td>{{ block.miner_name }}</td>
+                                            <td>{{ block.email }}</td>
+                                            <td>{{block.phone_number}}</td>
+                                            <td>{{block.ip_address}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<div class="col-8 position-absolute bottom-0 start-50 translate-middle-x">
+    <div class="text-center">
+        <span><i class="fa fas fa-copyright"></i></span> Mumia
+    </div>
+</div>
+{% endblock content %}
