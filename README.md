@@ -20,3 +20,5 @@ In this project you dont need to use any HTTP client like Postman or Curl
 I used [Bootstrap5](getbootstrap.com/docs/5.0) for styling the templates
 
 Template format is in [Django Template Language DLT](https://docs.djangoproject.com/en/4.1/ref/templates/language/)  
+
+Download the ```default.png``` file file ```Blockchain>static>profile_pics``` since its the startup image from the database
